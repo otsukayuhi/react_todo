@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function TodoForm({ add }) {
+const TodoForm = ({ add }) => {
   const [value, setValue] = useState('')
   const handleSubmit = e => {
     e.preventDefault()
@@ -20,3 +20,5 @@ export default function TodoForm({ add }) {
     </form>
   )
 }
+
+export default TodoForm
