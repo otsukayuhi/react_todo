@@ -1,28 +1,33 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import TodoForm from './TodoForm'
+import Todo from './Todo'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+const App = () => {
+  const [todos, setTodos] = useState([
+    { text: '食う' },
+    { text: '寝る' },
+    { text: '遊ぶ' }
+  ])
+
+  const add = text => {
+    const newTodos = [...todos, { text }]
+    setTodos(newTodos)
   }
+
+  const complete = index => {
+    const newTodos = [...todos]
+    newTodos.splice(index, 1)
+    setTodos(newTodos)
+  }
+
+  return (
+    <React.Fragment>
+      {todos.map((todo, index) => (
+        <Todo key={index} complete={complete} index={index} todo={todo} />
+      ))}
+      <TodoForm add={add} />
+    </React.Fragment>
+  )
 }
 
-export default App;
+export default App
