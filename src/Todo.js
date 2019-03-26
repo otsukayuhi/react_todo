@@ -1,6 +1,6 @@
 import React from 'react'
 
-const todo = ({ todo, complete, index }) => {
+const Todo = ({ todo, complete, index }) => {
   return (
     <p>
       <button onClick={() => complete(index)}>レ</button> {todo.text}
@@ -8,4 +8,4 @@ const todo = ({ todo, complete, index }) => {
   )
 }
 
-export default todo
+export default Todo
